@@ -2,7 +2,8 @@ use git2::{Error, Repository, Signature};
 
 fn doit() -> Result<(), Error> {
     let repo = Repository::init("tmp")?;
-    let mut t = repo.treebuilder(None).unwrap().write()?;
+    let mut b = repo.treebuilder(None)?;
+    let mut t = b.write()?;
     println!("tree is {}", t.to_string());
 
     for _ in 0..10 {
